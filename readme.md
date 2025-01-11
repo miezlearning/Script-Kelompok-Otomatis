@@ -112,7 +112,7 @@ A tool to scrape student data from [STAR Unmul](https://star.unmul.ac.id/)
 2. Navigate to the page containing student list
 3. Open Chrome DevTools (F12)
 4. Go to Console tab
-5. Copy and paste script from `user-client/scrap-star-data.js`
+5. Copy and paste script from [`user-client/scrap-star-data.js`](https://github.com/miezlearning/Script-Kelompok-Otomatis/blob/master/user-client/scrap-star-data.js)
 6. The script will:
    - Automatically collect NIM and names
    - Download as `mhs.txt`
@@ -124,7 +124,7 @@ A tool to scrape student data from [STAR Unmul](https://star.unmul.ac.id/)
 2. Buka halaman yang berisi daftar mahasiswa
 3. Buka DevTools Chrome (F12)
 4. Buka tab Console
-5. Copy dan paste script dari `user-client/scrap-star-data.js`
+5. Copy dan paste script dari [`user-client/scrap-star-data.js`](https://github.com/miezlearning/Script-Kelompok-Otomatis/blob/master/user-client/scrap-star-data.js)
 6. Script akan:
    - Otomatis mengumpulkan NIM dan nama
    - Download sebagai `mhs.txt`
