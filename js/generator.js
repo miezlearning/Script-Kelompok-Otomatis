@@ -96,3 +96,14 @@ function copyOutput() {
     }
     window.getSelection().removeAllRanges();
 }
+
+
+function clear() {
+    var fileInput = document.getElementById('fileInput');
+    fileInput.value = '';
+    fileInput.outerHTML = fileInput.outerHTML;
+    document.getElementById('input').value = '';
+    document.getElementById('output').textContent = '';
+    var notification = document.getElementById('notification');
+    notification.classList.add('hidden');
+}
