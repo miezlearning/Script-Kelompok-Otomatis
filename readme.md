@@ -86,3 +86,18 @@ const data = [
 3. Kosongin sel buat hapus data
 4. Cuma angka 0-999 yang valid
 ```
+
+## 📑 Template Spreadsheet
+
+You can use our pre-made template for quick setup:
+
+1. Access the template here: [Template Kelompok](https://docs.google.com/spreadsheets/d/1mxStezLOWMkMrgqvJhhGbzVcOPxTdgS9aM6HitPETkk/edit?usp=sharing)
+2. Make a copy of the template:
+   - Go to `File` > `Make a copy`
+   - Give it a name and choose your destination folder
+   - Click `OK`
+3. The template includes:
+   - Pre-configured columns for NIM and Names
+   - Example data format
+   - Ready-to-use formulas and formatting
+   - Column D set up for 3-digit NIM input
