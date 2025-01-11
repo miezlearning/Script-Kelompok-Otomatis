@@ -99,9 +99,9 @@ function copyOutput() {
 
 
 function clear() {
-    var fileInput = document.getElementById('fileInput');
-    fileInput.value = '';
-    fileInput.outerHTML = fileInput.outerHTML;
+    console.log("Clear All function called.");
+    document.getElementById('uploadForm').reset();
+    document.getElementById('fileInput').value = '';
     document.getElementById('input').value = '';
     document.getElementById('output').textContent = '';
     var notification = document.getElementById('notification');
