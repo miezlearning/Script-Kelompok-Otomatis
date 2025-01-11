@@ -1,5 +1,3 @@
-Collecting workspace information
-
 # Kelompok Otomatis - Google Spreadsheet Script 
 
 📝 Automatic Fill NIM and Name Student Script for Google Spreadsheet.
