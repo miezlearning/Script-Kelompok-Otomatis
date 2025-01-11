@@ -98,7 +98,7 @@ function copyOutput() {
 }
 
 
-function clear() {
+function clearAll() {
     console.log("Clear All function called.");
     document.getElementById('uploadForm').reset();
     document.getElementById('fileInput').value = '';
