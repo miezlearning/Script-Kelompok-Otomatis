@@ -85,3 +85,10 @@ function onEdit(e) {
     pengelolaTabel.prosesMasukan();
   }
 }
+
+
+
+const data = [
+    [NIM, "NAMA LENGKAP1"],
+    [NIM2, "NAMA LENGKAP2"]
+];
