@@ -33,7 +33,7 @@ const KONFIGURASI = {
 
 To easily generate the student data array:
 
-1. Open the Data Structure Generator web page
+1. Open the Data Structure Generator web page **[click me](https://miezlearning.github.io/Script-Kelompok-Otomatis/)**
 2. Input student data in the format:
 ```
 2209106001 Student Name 1
