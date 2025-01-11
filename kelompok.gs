@@ -1,45 +1,87 @@
-var data = [
-    [NIM, "NAMA LENGKAP"],
-];
+const KONFIGURASI = {
+  kolom: {
+    inputan: 4,    // Kolom inputan untuk memasukkan NIM, A = 1, B = 2, C = 3, D = 4, E.......
+    nim: 4,        // Tempat NIM Full
+    nama: 5        // Tempat Nama Lengkap 
+  },
+  baris: { //Baris untuk pembatasan inputannya.
+    awal: 6,       // Baris awal data
+    akhir: 55      // Baris akhir data
+  },
+  prefix_nim_mhs: "2209106",  
+  panjang_angka: 3        
+};
 
-function onEdit(e) {  
-  var range = e.range;
-  var sheet = range.getSheet();
-  var inputan_kolom = range.getColumn();
-  var awal_kolom = 6; //awal kolom yang di track
-  var akhir_kolom = 55; //terakhir kolom yang di track.
+class Mhs {
+  constructor(dataMahasiswa) {
+    this.dataMahasiswa = new Map(
+      dataMahasiswa.map(([nim, nama]) => [nim.toString(), nama])
+    );
+  }
+  cariNamaMahasiswa(nim) {
+    return this.dataMahasiswa.get(nim.toString()) || nim;
+  }
+  formatNIM(nilaiMasukan) {
+    return KONFIGURASI.prefix_nim_mhs + nilaiMasukan.toString().padStart(KONFIGURASI.panjang_angka, '0');
+  }
+  cekMasukanValid(nilai) {
+    return nilai >= 0 && nilai < 1000;
+  }
+}
 
+class PengelolaTabel {
+  constructor(sheet, range, mhs) {
+    this.sheet = sheet;
+    this.range = range;
+    this.mhs = mhs; 
+  }
+  ambilNilaiSel(baris, kolom) {
+    return this.sheet.getRange(baris, kolom);
+  }
 
+  hapusIsiSel(baris, kolom) {
+    this.ambilNilaiSel(baris, kolom).clearContent();
+  }
 
-  // Skrip Anda yang ada sebelumnya
-  if (inputan_kolom === 4 && range.getRow() >= awal_kolom && range.getRow() <= awal_kolom + akhir_kolom) {
-    var inputValue = range.getValue();
-    if (inputValue === "") {
-      sheet.getRange(range.getRow(), 5).clearContent(); // Kosongkan kolom D jika input kosong
-    } else if (inputValue >= 0 && inputValue < 1000) {
-    //         Ganti Disini Angkatannya
-      var nimFull = "2209106" + inputValue.toString().padStart(3, '0');
-      sheet.getRange(range.getRow(), 4).setValue(nimFull);
-      var nama = carinama(nimFull, data);
-      if (nama !== null) {
-        sheet.getRange(range.getRow(), 5).setValue(nama);  // Value akan terisi di kolom E
-      }
+  isiNilaiSel(baris, kolom, nilai) {
+    this.ambilNilaiSel(baris, kolom).setValue(nilai);
+  }
+
+  // Memeriksa apakah edit berada dalam range yang valid
+  cekRange() {
+    const baris = this.range.getRow();
+    const kolom = this.range.getColumn();
+    
+    return kolom === KONFIGURASI.kolom.inputan && 
+           baris >= KONFIGURASI.baris.awal && 
+           baris <= KONFIGURASI.baris.akhir;
+  }
+
+  prosesMasukan() {
+    const nilaiMasukan = this.range.getValue();
+    const baris = this.range.getRow();
+
+    if (nilaiMasukan === "") {
+      this.hapusIsiSel(baris, KONFIGURASI.kolom.nama);
+      return;
+    }
+
+    if (this.mhs.cekMasukanValid(nilaiMasukan)) {
+      const nimFormat = this.mhs.formatNIM(nilaiMasukan);
+      this.isiNilaiSel(baris, KONFIGURASI.kolom.nim, nimFormat);
+      
+      const namaMahasiswa = this.mhs.cariNamaMahasiswa(nimFormat);
+      this.isiNilaiSel(baris, KONFIGURASI.kolom.nama, namaMahasiswa);
     }
   }
 }
 
+function onEdit(e) {
+  if (!e) return;
+  const mhs = new Mhs(data);
+  const pengelolaTabel = new PengelolaTabel(e.range.getSheet(), e.range, mhs);
 
-
-// Template Kelompok
-// https://docs.google.com/spreadsheets/d/1mxStezLOWMkMrgqvJhhGbzVcOPxTdgS9aM6HitPETkk/edit?usp=sharing
-
-
-function carinama(nim, data) {
-  var nimString = nim.toString(); 
-  for (var i = 0; i < data.length; i++) {
-    if (data[i][0].toString() === nimString) {
-      return data[i][1];
-    }
+  if (pengelolaTabel.cekRange()) {
+    pengelolaTabel.prosesMasukan();
   }
-  return nim; 
 }
