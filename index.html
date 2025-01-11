@@ -46,6 +46,19 @@
             <h1 class="text-3xl font-bold text-center mb-6 text-purple-600 float-animation">Data Structure Generator</h1>
             
             <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="fileInput">
+                    Upload Data File (txt):
+                </label>
+                <input 
+                    type="file" 
+                    id="fileInput" 
+                    accept="text/plain" 
+                    onchange="handleFileUpload()" 
+                    class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                />
+            </div>
+            
+            <div class="mb-6">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="input">
                     Input Data (Nama dan NIM):
                 </label>
@@ -56,7 +69,7 @@
 2509106120 Alika Masya Majaswara"
                 ></textarea>
             </div>
-
+            
             <button 
                 onclick="generateStructure()"
                 class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transform hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl"

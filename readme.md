@@ -132,4 +132,5 @@ A tool to scrape student data from [STAR Unmul](https://star.unmul.ac.id/)
 7. Gunakan file yang didownload dengan Data Structure Generator
 
 > Note: Script only works on STAR Unmul student listing pages
+
 > Catatan: Script hanya berfungsi pada halaman daftar mahasiswa STAR Unmul

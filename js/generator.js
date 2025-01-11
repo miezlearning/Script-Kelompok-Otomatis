@@ -17,10 +17,51 @@ function showNotification(message) {
     }, 3000);
 }
 
+function handleFileUpload() {
+    const fileInput = document.getElementById('fileInput');
+    const file = fileInput.files[0];
+    if (file) {
+        if (file.type !== "text/plain") {
+            showNotification('Hanya untuk file txt kak.');
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const content = e.target.result;
+            document.getElementById('input').value = content;
+            showNotification('File berhasil diupload.');
+        };
+        reader.readAsText(file);
+    }
+}
+
 function generateStructure() {
     const input = document.getElementById('input').value;
     const lines = input.trim().split('\n');
-    
+
+    const structuredData = lines.map(line => {
+        if (line.includes('\t')) {
+            const parts = line.trim().split('\t');
+            const nim = parts[0];
+            const name = parts.slice(1).join('\t');
+            return `    [${nim}, "${toTitleCase(name)}"]`;
+        } else {
+            const parts = line.trim().split(' ');
+            const nim = parts[0];
+            const name = parts.slice(1).join(' ');
+            return `    [${nim}, "${toTitleCase(name)}"]`;
+        }
+    });
+
+    showNotification('Berhasil dibuat!');
+
+    const output = `const data = [\n${structuredData.join(',\n')}\n];`;
+    document.getElementById('output').textContent = output;
+}
+
+function processInput(inputData) {
+    const lines = inputData.trim().split('\n');
+
     const structuredData = lines.map(line => {
         if (line.includes('\t')) {
             const parts = line.trim().split('\t');
