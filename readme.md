@@ -101,3 +101,35 @@ You can use our pre-made template for quick setup:
    - Example data format
    - Ready-to-use formulas and formatting
    - Column D set up for 3-digit NIM input
+
+
+## 🔍 STAR Unmul Data Scraping
+
+A tool to scrape student data from [STAR Unmul](https://star.unmul.ac.id/)
+
+### English
+1. Access STAR Unmul and login
+2. Navigate to the page containing student list
+3. Open Chrome DevTools (F12)
+4. Go to Console tab
+5. Copy and paste script from `user-client/scrap-star-data.js`
+6. The script will:
+   - Automatically collect NIM and names
+   - Download as `mhs.txt`
+   - Format: `2209106xxx Student Name`
+7. Use the downloaded file with Data Structure Generator
+
+### Bahasa Indonesia
+1. Buka dan login ke STAR Unmul
+2. Buka halaman yang berisi daftar mahasiswa
+3. Buka DevTools Chrome (F12)
+4. Buka tab Console
+5. Copy dan paste script dari `user-client/scrap-star-data.js`
+6. Script akan:
+   - Otomatis mengumpulkan NIM dan nama
+   - Download sebagai `mhs.txt`
+   - Format: `2209106xxx Nama Mahasiswa`
+7. Gunakan file yang didownload dengan Data Structure Generator
+
+> Note: Script only works on STAR Unmul student listing pages
+> Catatan: Script hanya berfungsi pada halaman daftar mahasiswa STAR Unmul
