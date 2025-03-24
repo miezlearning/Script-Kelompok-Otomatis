@@ -2,6 +2,8 @@
 
 📝 Automatic Fill NIM and Name Student Script for Google Spreadsheet.
 
+![Contoh](https://media.discordapp.net/attachments/1327714040213930096/1353758959634219018/ezgif-3d7a000fd83ab7.gif?ex=67e2d1c7&is=67e18047&hm=f377ec12a5edce639bbd1e07248d4add8b8ad2cd1ef90c8165650ea8fd581cd8&=&width=1000&height=563)
+
 ## ⚙️ Setup Google Spreadsheet
 
 1. Create a new Google Spreadsheet
